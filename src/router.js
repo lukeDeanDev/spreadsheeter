@@ -11,14 +11,6 @@ router.get('/', (req, res) => {
   res.redirect('/api-docs');
 });
 
-router.get('/hello', (req, res) => {
-  res.send('Hello');
-});
-
-router.post('/echo', express.json(), (req, res) => {
-  res.send(req.body);
-});
-
 router.post('/sheetify', express.json(), async (req, res) => {
   const input = req.body;
   const output = await excelify(input);
