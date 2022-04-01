@@ -28,6 +28,21 @@ module.exports = () => ({
         responses: { 200: { description: 'OK' } },
       },
     },
+    '/sheetify': {
+      post: {
+        summary: 'Turn the JSON payload into a spreadsheet',
+        requestBody: {
+          content: {
+            'application/json': {
+              schema: {
+                type: 'object',
+              },
+            },
+          },
+        },
+        responses: { 200: { description: 'OK' } },
+      },
+    },
   },
   components: {},
 });

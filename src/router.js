@@ -1,6 +1,7 @@
 const express = require('express');
 const swaggerUi = require('swagger-ui-express');
 const swaggerDocument = require('./swaggerDoc')();
+const { excelify } = require('./excel');
 
 const router = express.Router();
 
@@ -14,9 +15,17 @@ router.get('/hello', (req, res) => {
   res.send('Hello');
 });
 
-router.post('/echo', (req, res) => {
-  const payload = req.body;
-  res.send(payload);
+router.post('/echo', express.json(), (req, res) => {
+  res.send(req.body);
+});
+
+router.post('/sheetify', express.json(), async (req, res) => {
+  const input = req.body;
+  const output = await excelify(input);
+  // Sets content-disposition: attachment; filename="stuff.xlsx"
+  // Sets content-type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet
+  res.attachment('stuff.xlsx');
+  res.send(output);
 });
 
 module.exports = { router };
