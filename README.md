@@ -10,6 +10,6 @@ Clone this project
 
 `npm install`
 
-`npm dev`
+`npm run dev`
 
 Navigate to `http://localhost:8080` and use the swagger page
