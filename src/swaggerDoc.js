@@ -13,6 +13,21 @@ module.exports = () => ({
         responses: { 200: { description: 'OK' } },
       },
     },
+    '/echo': {
+      post: {
+        summary: 'echo back the JSON payload',
+        requestBody: {
+          content: {
+            'application/json': {
+              schema: {
+                type: 'object',
+              },
+            },
+          },
+        },
+        responses: { 200: { description: 'OK' } },
+      },
+    },
   },
   components: {},
 });
